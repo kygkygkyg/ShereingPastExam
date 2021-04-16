@@ -1,0 +1,38 @@
+version: '3'
+services:
+  # Django Application
+  web:
+    build: ./web
+    container_name: django-web
+    tty: true
+    user: root
+    ports: 
+      - 8989:8989
+    environment: 
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./wait-for-it.sh:/tmp/wait-for-it.sh
+
+    working_dir: /web
+    depends_on:
+      - db
+    # command: >
+      # /tmp/wait-for-it.sh -t 60 db:3306
+      # -- bash -c 'python3 manage.py runserver 0.0.0.0:8000'
+
+  # MySQL
+  db:
+    container_name: django-db
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - TZ=Asia/Tokyo
+      - MYSQL_DATABASE=django_db
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=dev
+      - MYSQL_ROOT_PASSWORD=root
+      # - MYSQL_ALLOW_EMPTY_PASSWORD: ‘yes’
+    volumes:
+      - ./db/my.cnf:/etc/mysql/conf.d/my_config.cnf
