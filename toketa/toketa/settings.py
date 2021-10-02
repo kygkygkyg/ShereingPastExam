@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'toketa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'root',
+        'HOST': 'db',
+        'PASSWORD': 'root',
+        'POST': 3306
     }
 }
 
