@@ -7,7 +7,7 @@ def sign_up(request):
     if request.GET:
         msg = request.GET['msg']
         if msg=='hoge':
-            return render(request, 'toketa/home.html', {'msg': msg})
+            return render(request, 'toketa/sign_up.html', {'msg': msg})
         else:
             return HttpResponse(f"{msg}")
     else:
