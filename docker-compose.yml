@@ -11,7 +11,7 @@ services:
     environment: 
       - TZ=Asia/Tokyo
     volumes:
-      - ./toketa:/web/toketa
+      - ./:/web/
       - ./wait-for-it.sh:/tmp/wait-for-it.sh
 
     working_dir: /web
