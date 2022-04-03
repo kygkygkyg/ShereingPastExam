@@ -1,4 +1,6 @@
 __pycache__/
 db.sqlite3
-migrations
 .DS_Store
+
+# 本番環境まではmigrationsはコミットしない
+migrations
