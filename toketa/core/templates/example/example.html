@@ -1,0 +1,23 @@
+こんにちは
+
+<!--
+    <form action={% url 'example' %}></form>
+    とすると、core/urls.pyでnameで指定したURLの名前のところに
+    このフォームを送信することができる(ページ遷移可能)
+-->
+
+<form action={% url 'example' %}  method="POST">{% csrf_token %}
+    <!--
+        {% csrf_token}: CSRF(クロスサイトリクエストフォージェリ)という、webアプリ脆弱性の検証を行ってくれるdjangoの機能。
+        これを書いておくとPOSTリクエストがきたら自動でdjangoがトークンを発行して検証までを行ってくれる
+    -->
+    <p>名前</p>
+    <input name="name" value="">
+    <p>Email</p>
+    <input name="email" type="email" value="">
+    <p>パスワード</p>
+    <input name="passwd" type="password" value="">
+    <div>
+        <button>Send form</button>
+    </div>
+</form>
